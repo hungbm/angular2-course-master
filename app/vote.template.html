@@ -1,0 +1,14 @@
+
+<div class="voter">
+    <i class="glyphicon"
+        [class.glyphicon-menu-up] = "true" 
+        [class.highlighted]="myVote==1"     
+        (click)="onClickUp()">          
+    </i><br>
+    <span> {{voteCount}} </span><br>
+    <i class="glyphicon"       
+        [class.glyphicon-menu-down] = "true"
+        [class.highlighted]="myVote==-1" 
+        (click)="onClickDown()">         
+    </i>
+</div>

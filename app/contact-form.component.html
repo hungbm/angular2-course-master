@@ -1,0 +1,39 @@
+<form #f="ngForm" (ngSubmit)="onSubmit(f.form)" style="width: 80%; margin:0 auto;">
+    <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input 
+        ngControl="firstName" 
+        #firstName="ngForm" 
+        id="firstName" 
+        type="text" 
+        class="form-control" 
+        required
+        minlength="3">
+        <div *ngIf="firstName.touched && firstName.errors">
+            {{firstName.errors | json}}
+            <div 
+                class="alert alert-danger"
+                *ngIf="firstName.errors.required"> First name is required
+            </div>
+            <div 
+                class="alert alert-danger"
+                *ngIf="firstName.errors.minlength"> First name should be minimum {{firstName.errors.minlength.requiredLength}} characters
+            </div>
+        </div>
+    </div>
+    <div class="form-gourp">
+        <label for="comment">Comment</label>
+        <textarea 
+        #comment="ngForm"
+        ngControl="comment" 
+        class="form-control" 
+        id="comment" 
+        cols="30" 
+        rows="10"
+        required></textarea>
+        <div 
+        class="alert alert-danger"
+        *ngIf="comment.touched &&!comment.valid"> Comment is required</div>
+    </div>
+    <button class="btn btn-primary" [disabled]="!f.valid" type="submit">Submit</button>
+</form>
